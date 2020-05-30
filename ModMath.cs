@@ -7,19 +7,19 @@ namespace ECExtensions
 {
 	public static class ModMath
 	{
-		public static BigInteger Mod(in this BigInteger value, BigInteger modulus) // https://stackoverflow.com/questions/1082917/mod-of-negative-number-is-melting-my-brain
+		public static BigInteger Mod(in this BigInteger value, in BigInteger modulus) // https://stackoverflow.com/questions/1082917/mod-of-negative-number-is-melting-my-brain
 		{
 			var r = value % modulus;
 			return r < 0 ? r + modulus : r;
 		}
 
-		public static BigInteger ModAdd(in this BigInteger augend, BigInteger addend, BigInteger p) =>
+		public static BigInteger ModAdd(in this BigInteger augend, in BigInteger addend, in BigInteger p) =>
 			(augend + addend).Mod(p);
 
-		public static BigInteger ModSubtract(in this BigInteger minuend, BigInteger subtrahend, BigInteger p) =>
+		public static BigInteger ModSubtract(in this BigInteger minuend, in BigInteger subtrahend, in BigInteger p) =>
 			(minuend - subtrahend).Mod(p);
 
-		public static BigInteger ModMultiply(in this BigInteger multiplicand, BigInteger multiplier, BigInteger p) =>
+		public static BigInteger ModMultiply(in this BigInteger multiplicand, in BigInteger multiplier, in BigInteger p) =>
 			(multiplier * multiplicand).Mod(p);
 
 		/// <summary>
@@ -28,7 +28,7 @@ namespace ECExtensions
 		/// <param name="k">An Integer</param>
 		/// <param name="p">Modulus</param>
 		/// <returns>Integer m such that (n * m) mod p = 1</returns>
-		public static BigInteger ModMultInverse(in this BigInteger k, BigInteger p) // https://andrea.corbellini.name/2015/05/23/elliptic-curve-cryptography-finite-fields-and-discrete-logarithms/
+		public static BigInteger ModMultInverse(in this BigInteger k, in BigInteger p) // https://andrea.corbellini.name/2015/05/23/elliptic-curve-cryptography-finite-fields-and-discrete-logarithms/
 		{
 			if (k == 0)
 				throw new Exception();
